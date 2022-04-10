@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="HitarthPattani_TwoFactorAuth">
+        <sequence>
+            <module name="Magento_TwoFactorAuth"/>
+        </sequence>
+    </module>
+</config>

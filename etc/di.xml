@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Configurations -->
+    <virtualType name="HitarthPattani\TwoFactorAuth\Model\Helper\EmailConfig" type="HitarthPattani\TwoFactorAuth\Model\Helper\ConfigProvider">
+        <arguments>
+            <argument name="fieldset" xsi:type="string">twofactorauth</argument>
+            <argument name="group" xsi:type="string">email</argument>
+            <argument name="methods" xsi:type="array">
+                <item name="resend_code_in" xsi:type="string">getResendCodeIn</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HitarthPattani\TwoFactorAuth\Model\Helper\OtpConfig" type="HitarthPattani\TwoFactorAuth\Model\Helper\ConfigProvider">
+        <arguments>
+            <argument name="fieldset" xsi:type="string">twofactorauth</argument>
+            <argument name="group" xsi:type="string">email/otp</argument>
+            <argument name="methods" xsi:type="array">
+                <item name="type" xsi:type="string">getType</item>
+                <item name="length" xsi:type="string">getLength</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- System 2FA providers list -->
+    <type name="Magento\TwoFactorAuth\Api\ProviderPoolInterface">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <!-- Parameter "name" must be the same as defined in virtualType "code" parameter -->
+                <item name="email" xsi:type="object">HitarthPattani\TwoFactorAuth\Model\Provider\Email</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="HitarthPattani\TwoFactorAuth\Model\Provider\Email" type="Magento\TwoFactorAuth\Model\Provider">
+        <arguments>
+            <argument name="engine" xsi:type="object">HitarthPattani\TwoFactorAuth\Model\Provider\Engine\Email</argument>
+            <argument name="code" xsi:type="string">email</argument>
+            <argument name="name" xsi:type="string">Email Authenticator</argument>
+            <argument name="icon" xsi:type="string">HitarthPattani_TwoFactorAuth::images/providers/email.png</argument>
+            <argument name="configureAction" xsi:type="string">hp_tfa/email/configure</argument>
+            <argument name="authAction" xsi:type="string">hp_tfa/email/auth</argument>
+            <argument name="extraActions" xsi:type="array">
+                <item name="authpost" xsi:type="string">hp_tfa/email/authpost</item>
+                <item name="resend" xsi:type="string">hp_tfa/email/resend</item>
+            </argument>
+            <argument name="canReset" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Blocks -->
+    <type name="HitarthPattani\TwoFactorAuth\Block\Provider\Email\Auth">
+        <arguments>
+            <argument name="emailConfig" xsi:type="object">HitarthPattani\TwoFactorAuth\Model\Helper\EmailConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Models -->
+    <type name="HitarthPattani\TwoFactorAuth\Model\GenerateSecret">
+        <arguments>
+            <argument name="optConfig" xsi:type="object">HitarthPattani\TwoFactorAuth\Model\Helper\OtpConfig</argument>
+        </arguments>
+    </type>
+</config>

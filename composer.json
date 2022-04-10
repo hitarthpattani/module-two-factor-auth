@@ -1,0 +1,24 @@
+{
+    "name": "hitarthpattani/module-two-factor-auth",
+    "description": "This module is used provide email 2fa to validate user on admin user login action",
+    "config": {
+        "sort-packages": true
+    },
+    "options": {
+        "symlink": true
+    },
+    "require": {
+        "php": "7.4.*",
+        "magento/framework": "*",
+        "magento/module-two-factor-auth": "*"
+    },
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "HitarthPattani\\TwoFactorAuth\\": ""
+        }
+    }
+}

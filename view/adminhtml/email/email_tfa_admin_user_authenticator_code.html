@@ -1,0 +1,19 @@
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+-->
+<!--@subject {{trans "Email 2FA Authenticator Code for Admin User for %name" name=$store_name}} @-->
+<!--@vars {
+"var username":"Admin User Name",
+"var store_name":"Current Store (Website) Name",
+"var token":"Token query parameter"
+} @-->
+
+<p>{{var username}},</p>
+<p>{{trans "Please use the authenticator code to login on the %store." store=$store_name }}</p>
+<h2 style="letter-spacing: 0.2em;">{{var token}}</h2>
+<p>{{trans "If you didn't request this, you can ignore this email or inform to store administrator."}}</p>
+<p>{{trans "Thank you,"}} {{var store_name}}</p>

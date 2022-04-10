@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="email_tfa_admin_user_authenticator_code" label="Email 2FA Authenticator Code for Admin User" file="email_tfa_admin_user_authenticator_code.html" type="html" module="HitarthPattani_TwoFactorAuth" area="adminhtml"/>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="hp_tfa" frontName="hp_tfa">
+            <module name="HitarthPattani_TwoFactorAuth" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

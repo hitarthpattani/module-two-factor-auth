@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <twofactorauth>
+            <email>
+                <authenticator_code_sender_identity>support</authenticator_code_sender_identity>
+                <resend_code_in>15</resend_code_in>
+                <otp>
+                    <type>number</type>
+                    <length>6</length>
+                </otp>
+            </email>
+        </twofactorauth>
+    </default>
+</config>

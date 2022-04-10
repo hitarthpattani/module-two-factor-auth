@@ -1,0 +1,65 @@
+<!--
+/**
+ * @package     HitarthPattani\TwoFactorAuth
+ * @author      Hitarth Pattani <hitarthpattani@gmail.com>
+ * @copyright   Copyright © 2022. All rights reserved.
+ */
+-->
+<div>
+    <div visible='currentStep() === "register"'>
+        <form method="post">
+            <fieldset class="admin__fieldset">
+                <legend class="admin__legend">
+                    <span data-bind='i18n: "2FA - Email Auth"'></span>
+                </legend><br/>
+
+                <div class="messages">
+                    <div class="message message-info info">
+                        <span data-bind='i18n: "Your authenticator code is being sent to your profile email address. Check your email inbox!"'></span>
+                    </div>
+                </div>
+
+                <div class="admin__field _required field-tfa_code">
+                    <label for="tfa_code" class="admin__field-label">
+                        <span data-bind='i18n: "Authenticator code"'></span>
+                    </label>
+                    <div class="admin__field-control">
+                        <input
+                                data-bind="value: verifyCode, enable: !waitVerifyText()"
+                                id="tfa_code"
+                                class="admin__control-text"
+                                type="text"
+                                autocomplete="off"
+                                autofocus
+                                placeholder="Your code"/>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class="actions">
+                        <button
+                                enable="!waitVerifyText()"
+                                click="doVerify"
+                                class="action-login action-primary">
+                            <span data-bind='i18n: waitVerifyText() ? waitVerifyText() : "Confirm"'></span>
+                        </button>
+                        <button
+                            enable="!waitResendText()"
+                            click="doResend"
+                            class="action-resend action-secondary">
+                            <span data-bind='i18n: waitResendText() ? waitResendText() : "Resend"'></span>
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div visible='currentStep() === "login"' class="tfa-waitbox">
+        <div data-role="spinner">
+            <div class="spinner">
+                <span/><span/><span/><span/><span/><span/><span/><span/>
+            </div>
+        </div>
+        <div data-bind='i18n: "Redirecting to Magento Admin Panel..."'></div>
+    </div>
+</div>
